@@ -5,14 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>JavascriptでD'Hondt計算</title>
 </head>
 <body>
   <h3>JavascriptでD'Hondt計算</h3>
-  <div class="main">
+  <h4>Webプログラミング入門３章の３項のプログラミングの練習で、<br>
+  ドント式計算をJavascriptで挑戦！</h4>
+  <h5>(テキストはnode.jsですが、ここのはJavascript使ってます。)</h5>
+  <h5>使用データ:<br>総務省「<a href="http://www.soumu.go.jp/senkyo/senkyo_s/data/sangiin24/index.html" target="_blank">第24回参議院議員通常選挙結果調</a>」</h5>
+  <img src="./dh.png" alt="比例代表選挙におけるドント式"><br>
+    <h5>総務省HPより(<a href="https://2019senkyo-sanin.go.jp/about/" target="_blank">https://2019senkyo-sanin.go.jp/about/</a>)</h5>
+  <hr>
+  <div class="result-area">
+      <div id="seat"></div>
+      <div id="list-plain"></div>
+    <div id="result-seat"></div>
     <div id="list"></div>
-    <div id="seat"></div>
   </div>
+  <br>
+  <h4>みんなの税金は、選挙に行った人達に好きにつかわれるんやで('Д')σ</h4>
+  <script type="application/javascript" src="https://embed.nicovideo.jp/watch/sm9393749/script?w=640&h=360"></script><noscript><a href="https://www.nicovideo.jp/watch/sm9393749">成人式で配られたＤＶＤがひどい件</a></noscript>
+
   <script src="./d_Hondt.js"></script>
 </body>
 </html>
