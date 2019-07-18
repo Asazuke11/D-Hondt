@@ -7,4 +7,4 @@ N予備校Webプログラミング第３章３項
 あまり参考にしないほうがいいかもしれない。(-_-;)
 
 GitHub Pages  
-(https://asazuke11.github.io/D-Hondt/)
+https://asazuke11.github.io/D-Hondt/
