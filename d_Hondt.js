@@ -68,7 +68,7 @@ for (let i = 0; i < seats; i++) {
   if (rankingArray[i][0].slice(0, 2) === '民進') {
     party_name[1].counter++;
   }
-  if (rankingArray[i][0].slice(0, 2) === '公') {
+  if (rankingArray[i][0].slice(0, 2) === '公明') {
     party_name[2].counter++;
   }
   if (rankingArray[i][0].slice(0, 2) === 'おお') {
