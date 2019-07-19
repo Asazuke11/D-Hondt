@@ -68,7 +68,7 @@ for (let i = 0; i < seats; i++) {
   if (rankingArray[i][0].slice(0, 2) === '民進') {
     party_name[1].counter++;
   }
-  if (rankingArray[i][0].slice(0, 2) === '公明') {
+  if (rankingArray[i][0].slice(0, 2) === '公') {
     party_name[2].counter++;
   }
   if (rankingArray[i][0].slice(0, 2) === 'おお') {
@@ -136,7 +136,7 @@ if((Math.round(total * 1000) /1000) === 56_007_352.842){
 // Math.round *1000) / 1000 使用してます    　//
   console.log('総票数確認テスト:true');
 }else{
-  console.log('総票数確認テスト:false');
+  console.log('%c総票数確認テスト:false','color: red');
 }
 
 //改選数とカウント総数の確認テスト
@@ -144,7 +144,7 @@ if((Math.round(total * 1000) /1000) === 56_007_352.842){
 if(48 === seats){
   console.log('改選議席数の確認:true');
 }else{
-  console.log('改選議席数の確認:false');
+  console.log('%c改選議席数の確認:false','color: red');
 }
 
 let total_seat = 0;
@@ -154,5 +154,5 @@ party_name.forEach((value) => {
 if(total_seat === seats){
   console.log('改選議席数合計の確認:true');
 }else{
-  console.log('改選議席数合計の確認:false');
+  console.log('%c改選議席数合計の確認:false','color: red');
 }
