@@ -6,14 +6,13 @@
 *@param {string} name:政党名
 *@param {number} counter:議席数カウント用
 *@param {number} vetes:得票数
-*@param {string} official:正式名
 *@param {Map} D_HondtMap:ドント式の計算結果を入れる連想配列
+*{{"自民1" => Object}
+*key: "自民1"
+*value: {D_Hond_result: 20114788.264, name: "自由民主党"}}
 *@param {string} key:政党名 + division　(同じ党での上書きを避けるためdivsion文字列追加してます)
 *@param {number} division:ドント式で使う除法の係数
 *@param {number} value:ドント式計算結果数
-*{{"自民1" => Object}
-*key: "自民1"
-*value: {D_Hond_result: 20114788.264, official: "自由民主党"}}
 
 *@param {array} rankingArray:
 *D_HondtMapを配列に変換、獲得票上位順にソートした物が入る配列
@@ -31,32 +30,29 @@
 
 const seats = 48;
 const party_name = [
-  { name: '自民', counter: 0, votes: 20_114_788.264, official: "自由民主党" },
-  { name: '民進', counter: 0, votes: 11_751_015.174, official: "民進党" },
-  { name: '公明', counter: 0, votes: 7_572_960.308, official: "公明党" },
-  { name: '維新', counter: 0, votes: 5_153_584.348, official: "おおさか維新の会" },
-  { name: '共産', counter: 0, votes: 6_016_194.559, official: "日本共産党" },
-  { name: '社民', counter: 0, votes: 1_536_238.752, official: "社会民主党" },
-  { name: '生活', counter: 0, votes: 1_067_300.546, official: "生活の党と山本太郎となかまたち" },
-  { name: '日本', counter: 0, votes: 734_024.218, official: "日本のこころを大切にする党" },
-  { name: '改革', counter: 0, votes: 580_653.416, official: "新党改革" },
-  { name: '怒り', counter: 0, votes: 466_706.136, official: "国民怒りの声" },
-  { name: '幸福', counter: 0, votes: 366_815.451, official: "幸福実現党" },
-  { name: '支持', counter: 0, votes: 647_071.670, official: "支持政党なし" }
+  { name: '自由民主党', counter: 0, votes: 20_114_788.264 },
+  { name: '民進党', counter: 0, votes: 11_751_015.174 },
+  { name: '公明党', counter: 0, votes: 7_572_960.308 },
+  { name: 'おおさか維新の会', counter: 0, votes: 5_153_584.348 },
+  { name: '日本共産党', counter: 0, votes: 6_016_194.559 },
+  { name: '社会民主党', counter: 0, votes: 1_536_238.752 },
+  { name: '生活の党と山本太郎となかまたち', counter: 0, votes: 1_067_300.546 },
+  { name: '日本のこころを大切にする党', counter: 0, votes: 734_024.218 },
+  { name: '新党改革', counter: 0, votes: 580_653.416 },
+  { name: '国民怒りの声', counter: 0, votes: 466_706.136 },
+  { name: '幸福実現党', counter: 0, votes: 366_815.451 },
+  { name: '支持政党なし', counter: 0, votes: 647_071.670 },
 ];
 
 let D_HondtMap = new Map();
 for (let i = 0; i < party_name.length; i++) {
   for (let division = 1; division <= seats; division++) {
     D_HondtMap.set(party_name[i].name + division, {
-
       D_Hond_result: party_name[i].votes / division,
-      official: party_name[i].official
-
+      name: party_name[i].name
     });
   };
 };
-
 
 const rankingArray = Array.from(D_HondtMap)
   .sort((pair1, pair2) => {
@@ -66,7 +62,7 @@ const rankingArray = Array.from(D_HondtMap)
 
 let voteList = ("<p><b>ドント計算内訳</b></p>");
 for (let i = 0; i < seats; i++) {
-  if (rankingArray[i][0].slice(0, 2) === '自民') {
+  if (rankingArray[i][0].slice(0, 2) === '自由') {
     party_name[0].counter++;
   }
   if (rankingArray[i][0].slice(0, 2) === '民進') {
@@ -75,25 +71,25 @@ for (let i = 0; i < seats; i++) {
   if (rankingArray[i][0].slice(0, 2) === '公明') {
     party_name[2].counter++;
   }
-  if (rankingArray[i][0].slice(0, 2) === '維新') {
+  if (rankingArray[i][0].slice(0, 2) === 'おお') {
     party_name[3].counter++;
   }
-  if (rankingArray[i][0].slice(0, 2) === '共産') {
+  if (rankingArray[i][0].slice(0, 2) === '日本') {
     party_name[4].counter++;
   }
-  if (rankingArray[i][0].slice(0, 2) === '社民') {
+  if (rankingArray[i][0].slice(0, 2) === '社会') {
     party_name[5].counter++;
   }
   if (rankingArray[i][0].slice(0, 2) === '生活') {
     party_name[6].counter++;
   }
-  if (rankingArray[i][0].slice(0, 2) === '日本') {
+  if (rankingArray[i][0].slice(0, 3) === '日本の') {
     party_name[7].counter++;
   }
-  if (rankingArray[i][0].slice(0, 2) === '改革') {
+  if (rankingArray[i][0].slice(0, 2) === '新党') {
     party_name[8].counter++;
   }
-  if (rankingArray[i][0].slice(0, 2) === '怒り') {
+  if (rankingArray[i][0].slice(0, 2) === '国民') {
     party_name[9].counter++;
   }
   if (rankingArray[i][0].slice(0, 2) === '幸福') {
@@ -102,7 +98,7 @@ for (let i = 0; i < seats; i++) {
   if (rankingArray[i][0].slice(0, 2) === '支持') {
     party_name[11].counter++;
   }
-  voteList += ("<p>" + (i + 1) + "." + rankingArray[i][1].official + "：" + rankingArray[i][1].D_Hond_result + "</p>");
+  voteList += ("<p>" + (i + 1) + "." + rankingArray[i][1].name + "：" + rankingArray[i][1].D_Hond_result + "</p>");
 }
 
 let seatList = ("<p><b>各政党獲得議席</b></p>");
@@ -113,12 +109,12 @@ const ranking_party_name = Array.from(party_name)
   });
 
 ranking_party_name.forEach((value, index) => {
-  seatList += ("<p>" + value.official + `<br>` + value.counter + "</p><hr>");
+  seatList += ("<p>" + value.name + `<br>` + value.counter + "</p><hr>");
 });
 
 let list_plain = ("<p><b>開票結果</b></p>");
 party_name.forEach((value) => {
-  list_plain += ("<p>" + value.official + `<br>` + value.votes + "</p><hr>");
+  list_plain += ("<p>" + value.name + `<br>` + value.votes + "</p><hr>");
 });
 
 document.getElementById("seat").innerHTML = `<p><b>第24回参議院議員通常選挙比例区改選数：${seats}</b></p>`;
